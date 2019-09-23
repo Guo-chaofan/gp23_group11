@@ -14,12 +14,12 @@ class APP {
 object APP {
   def main(args: Array[String]): Unit = {
     System.setProperty("hadoop.home.dir", "D:\\Huohu\\下载\\hadoop-common-2.2.0-bin-master")
-    if(args.length != 3){
+    if(args.length != 2){
       println("输入目录不正确")
       sys.exit()
     }
 
-    val Array(inputPath,outputPath,docs) =args
+    val Array(inputPath,docs) =args
 
     val spark = SparkSession
       .builder()
@@ -65,7 +65,7 @@ object APP {
     })
       .map(t=>t._1+","+t._2.mkString(","))
 
-      .saveAsTextFile(outputPath)
-
+//      .saveAsTextFile(outputPath)
+      .foreach(println)
   }
 }
