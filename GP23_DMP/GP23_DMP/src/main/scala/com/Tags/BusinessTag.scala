@@ -1,11 +1,7 @@
 package com.Tags
 
 import ch.hsr.geohash.GeoHash
-<<<<<<< HEAD
-import com.util.{AmapUtils, JedisConnectionPool, String2Type, Tag}
-=======
 import com.util.{AmapUtil, JedisConnectionPool, String2Type, Tag}
->>>>>>> b0a790f978543b5a1c5d8c45a93ba7f96e2c668d
 import org.apache.commons.lang3.StringUtils
 import org.apache.spark.sql.Row
 
@@ -13,11 +9,7 @@ import org.apache.spark.sql.Row
   * 商圈标签
   */
 object BusinessTag extends Tag{
-<<<<<<< HEAD
-  override def makTags(args: Any*): List[(String, Int)] = {
-=======
   override def makeTags(args: Any*): List[(String, Int)] = {
->>>>>>> b0a790f978543b5a1c5d8c45a93ba7f96e2c668d
     var list = List[(String,Int)]()
 
     // 获取数据
@@ -52,11 +44,7 @@ object BusinessTag extends Tag{
     var business = redis_queryBusiness(geohash)
     // 去高德请求
     if(business == null){
-<<<<<<< HEAD
-      business = AmapUtils.getBusinessFromAmap(long,lat)
-=======
       business = AmapUtil.getBusinessFromAmap(long,lat)
->>>>>>> b0a790f978543b5a1c5d8c45a93ba7f96e2c668d
       // 将高德获取的商圈存储数据库
       if(business!=null && business.length>0){
         redis_insertBusiness(geohash,business)
