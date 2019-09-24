@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object Log2parquet {
 
   def main(args: Array[String]): Unit = {
-    System.setProperty("hadoop.home.dir", "D:\\Huohu\\下载\\hadoop-common-2.2.0-bin-master")
+    //System.setProperty("hadoop.home.dir", "D:\\Huohu\\下载\\hadoop-common-2.2.0-bin-master")
     // 设定目录限制
     if(args.length != 2 ){
       println("目录不正确，退出程序")
@@ -119,6 +119,7 @@ object Log2parquet {
       )
     })
     val df = sQLContext.createDataFrame(rowRDD,SchemaUtil.structType)
+    df.show()
     df.write.parquet(outputPath)
     // 关闭
     sc.stop()
